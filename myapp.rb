@@ -9,14 +9,14 @@ require 'json'
 
 
 
-
+#http://localhost:4567/api
 
 post "/api" do
     request.body.rewind  # in case someone already read it
     data = JSON.parse request.body.read
     # return "Hello #{data['value']}!"
 
-    uri = URI.parse("http://172.16.3.142:4000")
+    uri = URI.parse(process.env.HTTP_CONVERTER_HTTP + "://" + process.env.HTTP_CONVERTER_HOST + ":" + process.env.HTTP_CONVERTER_PORT +  process.env.HTTP_CONVERTER_PATH)
 
     header = {'Content-Type': 'application/json'}
     body = {
@@ -36,7 +36,7 @@ post "/api" do
     puts response.body
 
 
-    post_uri = URI.parse("http://172.16.2.151/api/image")
+    post_uri = URI.parse(process.env.HTTP_TV_HTTP + "://" + process.env.HTTP_TV_HOST + ":" + process.env.HTTP_TV_PORT +  process.env.HTTP_TV_PATH)
 
 
     header = {'Content-Type': 'application/x-www-form-urlencoded'}
