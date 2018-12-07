@@ -6,7 +6,7 @@ require "base64"
 require 'net/http'
 require 'uri'
 require 'json'
-
+require 'dotenv/load'
 
 
 #http://localhost:4567/api
