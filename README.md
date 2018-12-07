@@ -30,4 +30,4 @@ HTTP_CONVERTER_PATH=/
 
 Or you can change the setting in your terminal:
 
-`TTN_APPID=test TTN_ACCESSKEY=ttn-account-v2 HTTP_HOST... node server.js`
+`HTTP_TV_HTTP=http HTTP_TV_HOST=172.16.2.151 HTTP_TV_PORT... ruby myapp.rb`
