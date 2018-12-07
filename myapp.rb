@@ -16,7 +16,7 @@ post "/api" do
     data = JSON.parse request.body.read
     # return "Hello #{data['value']}!"
 
-    uri = URI.parse(process.env.HTTP_CONVERTER_HTTP + "://" + process.env.HTTP_CONVERTER_HOST + ":" + process.env.HTTP_CONVERTER_PORT +  process.env.HTTP_CONVERTER_PATH)
+    uri = URI.parse(ENV["HTTP_CONVERTER_HTTP"] + "://" + ENV["HTTP_CONVERTER_HOST"] + ":" + ENV["HTTP_CONVERTER_PORT"] +  ENV["HTTP_CONVERTER_PATH"])
 
     header = {'Content-Type': 'application/json'}
     body = {
@@ -36,7 +36,7 @@ post "/api" do
     puts response.body
 
 
-    post_uri = URI.parse(process.env.HTTP_TV_HTTP + "://" + process.env.HTTP_TV_HOST + ":" + process.env.HTTP_TV_PORT +  process.env.HTTP_TV_PATH)
+    post_uri = URI.parse(ENV["HTTP_TV_HTTP"] + "://" + ENV["HTTP_TV_HOST"] + ":" + ENV["HTTP_TV_PORT"] +  ENV["HTTP_TV_PATH"])
 
 
     header = {'Content-Type': 'application/x-www-form-urlencoded'}
