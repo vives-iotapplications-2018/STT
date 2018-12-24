@@ -1,9 +1,13 @@
 FROM ruby:2.5
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
-RUN mkdir /myapp
-WORKDIR /myapp
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
+
+# throw errors if Gemfile has been modified since Gemfile.lock
+RUN bundle config --global frozen 1
+
+WORKDIR /usr/src/app
+
+COPY Gemfile Gemfile.lock ./
 RUN bundle install
-COPY . /myapp
-CMD ["ruby", "myapp.rb"]
+
+COPY . .
+
+CMD ["./your-daemon-or-script.rb"]
